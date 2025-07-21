@@ -34,7 +34,7 @@ RUN \
         uuid-runtime \
         xmlstarlet \
         locales \
-    && locale-gen en_US.UTF \
+    && locale-gen en_US.UTF-8 \
     && \
     curl -fsSL -o /tmp/plex.deb \
         "https://downloads.plex.tv/plex-media-server-new/${VERSION}/debian/plexmediaserver_${VERSION}_${TARGETARCH}.deb" \
