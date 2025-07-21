@@ -5,7 +5,10 @@ ARG TARGETARCH
 ARG VENDOR
 ARG VERSION
 
-ENV DEBIAN_FRONTEND="noninteractive" \
+ENV LANG="en_US.UTF-8" \
+    LANGUAGE="en_US:en" \
+    LC_ALL="en_US.UTF-8" \
+    DEBIAN_FRONTEND="noninteractive" \
     NVIDIA_DRIVER_CAPABILITIES="compute,video,utility" \
     PLEX_MEDIA_SERVER_APPLICATION_SUPPORT_DIR="/config/Library/Application Support" \
     PLEX_MEDIA_SERVER_HOME="/usr/lib/plexmediaserver" \
@@ -30,7 +33,9 @@ RUN \
         tzdata \
         uuid-runtime \
         xmlstarlet \
+        locales \
     && \
+    && locale-gen en_US.UTF \
     curl -fsSL -o /tmp/plex.deb \
         "https://downloads.plex.tv/plex-media-server-new/${VERSION}/debian/plexmediaserver_${VERSION}_${TARGETARCH}.deb" \
     && \
